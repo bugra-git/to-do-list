@@ -1,13 +1,8 @@
 :root {
     --primary: #2563eb;
-    --primary-hover: #1d4ed8;
     --bg: #f8fafc;
-    --sidebar: #ffffff;
     --text: #1e293b;
     --text-light: #64748b;
-    --border: #e2e8f0;
-    --radius: 8px;
-    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
     --danger: #ef4444;
 }
 
@@ -139,11 +134,11 @@ nav details summary {
 }
 
 #newProjectForm button {
-  background-color: white;
+  background-color: transparent;
   color: var(--primary);
   border: 1px solid var(--primary);
-  padding: 2px;
-  border-radius: 4px;
+  padding: 2px 4px;
+  border-radius: 8px;
 }
 
 #newProjectForm button:hover {
@@ -151,4 +146,138 @@ nav details summary {
   border-color: var(--primary);
   color: white;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* main */
+main {
+    flex: 1;
+    padding: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+main h1 {
+    font-size: 1.875rem;
+    font-weight: bold;
+}
+
+/* main tasks summary */
+main ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+main ul li {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid silver;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+main ul li summary {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.todo-date {
+    margin-left: auto;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-light);
+    background: #f1f5f9;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+}
+
+input[type="checkbox"]:checked + span {
+    text-decoration: line-through;
+    color: var(--text-light);
+}
+
+/* main task body */
+details > div {
+    padding: 0 16px 16px 45px;
+    border-top: 1px solid #f8fafc;
+}
+
+details > div > * {
+  margin-bottom: 8px;
+}
+
+.description-edit {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-desc {
+  flex: 1;
+}
+
+.priority-fieldset {
+  border-radius: 4px;
+  padding: 4px;
+}
+
+/* buttons */
+#mainButtons {
+    margin-top: 1.5rem;
+}
+
+#mainButtons button, #confirmBtn {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+#mainButtons button:hover, #confirmBtn:hover { 
+  background-color: var(--primary);
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.delete-task, #headerButtons button {
+    background: transparent;
+    color: var(--danger);
+    border: 1px solid var(--danger);
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.delete-task:hover, #headerButtons button:hover {
+    background: var(--danger);
+    color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.edit-desc-btn {
+  background-color: transparent;
+  color: var(--text-light);
+  border: 1px solid var(--text-light);
+  padding: 2px 4px;
+  border-radius: 8px;
+}
+
+.edit-desc-btn:hover {
+  border-color: var(--text);
+  color: var(--text);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.overdue .todo-date {
+  background: var(--danger);
+  color: white;
 }

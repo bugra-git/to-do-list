@@ -29,13 +29,19 @@ function generateProjectsNav() {
 }
 
 const newProjectBtn = document.querySelector("#newProjectBtn");
+
 newProjectBtn.addEventListener("click", (e) => {
     e.preventDefault();
     const newProjectInput = document.querySelector("#newProjectForm input");
-    const newProject = toDoLists.createProject(newProjectInput.value);
+
+    const name = newProjectInput.value.trim(); 
+    if (!name) return;
+
+    const newProject = toDoLists.createProject(name);
     generateProjectNav(newProject);
+
     newProjectInput.value = "";
-})
+});
 
 const newTaskDialog = document.querySelector("#newTo-Do");
 const newTaskForm = document.querySelector("#newTo-DoForm");
@@ -94,6 +100,13 @@ function mainRender(navTo) {
     
     taskArray.forEach(todo => {
         const li = document.createElement("li");
+        const today = new Date().setHours(0,0,0,0);
+        const due = todo.dueDate.setHours(0,0,0,0);
+
+        if (todo.checkState !== "Done" && due < today) {
+            li.classList.add("overdue");
+        }
+
         const details = document.createElement("details");
         const summary = document.createElement("summary");
 
@@ -116,9 +129,11 @@ function mainRender(navTo) {
 
         const body = document.createElement("div");
         body.innerHTML = `
+            <div class="description-edit">
             <p class="desc">${todo.description || "No description yet"}</p>
-            <textarea class="edit-desc" style="display:none;"></textarea>
+            <input type="text" class="edit-desc" style="display:none;"></input>
             <button class="edit-desc-btn">Edit</button>
+            </div>
 
             <fieldset class="priority-fieldset">
                 <legend>Priority</legend>
@@ -207,3 +222,5 @@ navToday.addEventListener("click", () => mainRender("today"))
 
 const navUpcoming = document.querySelector("#upcomingNav");
 navUpcoming.addEventListener("click",() => mainRender("upcoming"));
+
+if (todo.dueDate < new Date()) li.classList.add("overdue");
