@@ -1,0 +1,119 @@
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --bg: #f8fafc;
+    --sidebar: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --radius: 8px;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --danger: #ef4444;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+}
+
+button, summary {
+  cursor: pointer;
+}
+
+/* nav */
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 240px;
+    background-color: white;
+    padding: 16px;
+}
+
+#todayNav, #upcomingNav, nav details {
+  border: none;
+  background-color: inherit;
+  padding: 8px;
+  text-align: left;
+  font-size: 1.2rem;
+  border-radius: 8px ;
+}
+
+#todayNav:hover, #upcomingNav:hover, nav details:hover {
+  background-color: var(--bg);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#todayNav:hover, #upcomingNav:hover, nav details summary:hover, nav details[open] summary {
+  color: var(--primary);
+}
+
+nav details summary {
+  display: flex;
+  align-items: bottom;
+}
+
+#projectsList {
+  padding-block: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+#projectsList li {
+  list-style: disc inside;
+}
+
+#projectsList li, #projectsList li button {
+  background-color: inherit;
+  border: none;
+  border-radius: 8px;
+  text-align: left;
+}
+
+#projectsList li:hover {
+  color: var(--primary);
+}
+
+#projectsList li button {
+  color: inherit;
+}
+
+#projectsList li *, #newProjectForm *  {
+  font-size: 1rem;
+}
+
+#newProjectForm {
+  display: flex;
+  gap: 8px;
+}
+
+#newProjectForm input {
+  flex: 1;
+  min-width: 0;
+}
+
+#newProjectForm button {
+  background-color: white;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 2px;
+  border-radius: 4px;
+}
+
+#newProjectForm button:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
