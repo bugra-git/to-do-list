@@ -168,6 +168,12 @@ main h1 {
     font-weight: bold;
 }
 
+#emptyParagraph {
+  color: var(--text-light);
+  font-style: italic;
+}
+
+
 /* main tasks summary */
 main ul {
     list-style: none;

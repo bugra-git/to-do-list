@@ -80,6 +80,9 @@ function mainRender(navTo) {
     const headerButtons = document.querySelector("#headerButtons");
     headerButtons.innerHTML = "";
 
+    const emptyParagraph = document.querySelector("#emptyParagraph");
+    emptyParagraph.textContent = "";
+
     const header = document.querySelector("main h1");
     if (navTo === "today") header.textContent = "Today";
     else if (navTo === "upcoming") header.textContent = "Upcoming";
@@ -93,6 +96,10 @@ function mainRender(navTo) {
     if (navTo === "today") {taskArray = toDoLists.today;}
     else if (navTo === "upcoming") {taskArray = toDoLists.allTasks;}
     else {taskArray = toDoLists.projects.find((project) => project.id === navTo).projectToDoList;}
+
+    if (!taskArray.length) {
+        emptyParagraph.textContent = "Task list is empty. You can add tasks"
+    }
 
     taskArray.sort((a,b) => {
         return a.dueDate - b.dueDate;
