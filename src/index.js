@@ -34,10 +34,13 @@ newProjectBtn.addEventListener("click", (e) => {
     e.preventDefault();
     const newProjectInput = document.querySelector("#newProjectForm input");
 
-    const name = newProjectInput.value.trim(); 
-    if (!name) return;
+    if (!newProjectInput.validity.valid) {
+        newProjectInput.setCustomValidity("You must enter a name for the project");
+        newProjectInput.reportValidity();
+        return
+    }
 
-    const newProject = toDoLists.createProject(name);
+    const newProject = toDoLists.createProject(newProjectInput);
     generateProjectNav(newProject);
 
     newProjectInput.value = "";
