@@ -229,5 +229,3 @@ navToday.addEventListener("click", () => mainRender("today"))
 
 const navUpcoming = document.querySelector("#upcomingNav");
 navUpcoming.addEventListener("click",() => mainRender("upcoming"));
-
-if (todo.dueDate < new Date()) li.classList.add("overdue");
